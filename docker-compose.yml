@@ -1,0 +1,20 @@
+version: '3'
+services: 
+  app:
+    build: .
+    ports: 
+      - "8080:80"
+    volumes: 
+      - .:/var/www/html
+  db:
+    image: mysql:5.7
+    ports: 
+      - "3306:3306"
+    environment: 
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: sampledb
+      MYSQL_USER: sampledbuser
+      MYSQL_PASSWORD: sampledbpassword
+    volumes: 
+      - ./data:/var/lib/mysql
+
